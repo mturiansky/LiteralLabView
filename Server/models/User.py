@@ -25,9 +25,17 @@ class User(db.Model, UserMixin):
         ''' returns false always, since a user is not anonymous '''
         return False
 
+    def is_authenticated(self):
+        ''' returns true if valid login credentials '''
+        return True
+
+    def is_active(self):
+        ''' returns true if an account has been activated '''
+        return True
+
     def get_id(self):
         ''' returns the id as a unicode string '''
-        return str(self.id).decode()
+        return str(self.id).decode('unicode-escape')
 
     def __repr__(self):
         ''' representation function '''
