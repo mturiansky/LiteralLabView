@@ -7,7 +7,7 @@ This file is used to run the development server.
 
 from argparse import ArgumentParser as AP
 from configuration import APP as app
-from routes.core import *
+from routes.core import home
 
 def add_arguments(parser):
     ''' used to add options to the arg parser '''
