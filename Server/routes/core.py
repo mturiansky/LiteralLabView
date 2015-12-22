@@ -8,4 +8,5 @@ from configuration import APP as app
 
 @app.route('/')
 def home():
+    ''' route for the landing page '''
     return render_template('index.html')

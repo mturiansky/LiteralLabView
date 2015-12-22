@@ -44,6 +44,7 @@ def gen_secret_key():
 
 # initialize app
 APP = Flask(__name__)
+APP.config['TITLE'] = 'LiteralLabView'
 
 # grab css and js files
 (APP.config['CSS'], APP.config['JS']) = glob_static()
