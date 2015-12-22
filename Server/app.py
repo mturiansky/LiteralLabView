@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 '''
 app.py
 This file is used to run the development server.
