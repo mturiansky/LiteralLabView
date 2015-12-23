@@ -30,4 +30,22 @@ def add_data(pname):
     temp_data = DataSet(pname)
     db.session.add(temp_data)
     db.session.commit()
-    return temp_data.tag
+    return temp_data
+
+def last_data():
+    ''' finds the most recent data set '''
+    count = DataSet.query.count()
+    return DataSet.query.get(count)
+
+def find_data(to_find):
+    ''' basic string based search '''
+    results = []
+    for data in DataSet.query.all():
+        if to_find in data.tag or to_find in data.date or to_find in data.project_name:
+            if data not in results:
+                results.append(data)
+    return results
+
+def get_by_tag(tag_to_find):
+    ''' returns the data item with the correct tag '''
+    return DataSet.query.filter_by(tag=tag_to_find).first() is not None

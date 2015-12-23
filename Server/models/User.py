@@ -40,3 +40,20 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         ''' representation function '''
         return '<User %s>' % self.username
+
+def add_user(uname, passwd):
+    ''' function to add user to database '''
+    temp_user = User(uname, passwd)
+    db.session.add(temp_user)
+    db.session.commit()
+    return temp_user
+
+def verify_user(uname, passwd):
+    ''' verifies the user '''
+    user = User.query.filter_by(username=uname).first()
+    temp_pass = sha1(passwd).hexdigest()
+    return temp_pass == user.password
+
+def get_user(id):
+    ''' function to return the user by id '''
+    return User.query.get(id)
