@@ -10,16 +10,17 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_sslify import SSLify
 from flask_mobility import Mobility
 from flask_login import LoginManager
+from flask_triangle import Triangle
 
 def glob_static():
     ''' a function to glob static and group files '''
     css_files = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css']
-    js_files = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js',
-                'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js',
-                'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js']
+    js_files = ['https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js',
+                'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js']
     file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static')
     for dummy_root, dummy_dirs, files in os.walk(file_path):
-        for i in files:
+        for i in sorted(files):
             if i.endswith('.css'):
                 css_files.append('/static/' + i)
             elif i.endswith('.js'):
@@ -74,6 +75,9 @@ SSL = SSLify(APP)
 
 # Mobility setup
 MOBILE = Mobility(APP)
+
+# Triangle setup
+TRI = Triangle(APP)
 
 # Login Manager setup
 LM = LoginManager()

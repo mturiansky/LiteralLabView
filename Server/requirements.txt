@@ -1,0 +1,7 @@
+Flask
+Flask-Login
+Flask-Mobility
+Flask-SQLAlchemy
+Flask-SSLify
+Flask-Triangle
+SQLAlchemy

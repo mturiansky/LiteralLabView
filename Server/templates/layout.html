@@ -15,7 +15,7 @@
     {% for css in config['CSS'] %}<link rel="stylesheet" href="{{ css }}">{% endfor %}
   </head>
 
-  <body>
+  <body ng-app="LiteralLabViewApp">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -41,6 +41,6 @@
     </div><!-- /.container -->
 
     <!-- js files, added at the end for faster loading -->
-    {% for js in config['JS'] %}<script src="{{ js }}"></script>{% endfor %}
+    {% for js in config['JS'] %}<script type="text/javascript" src="{{ js }}"></script>{% endfor %}
   </body>
 </html>
