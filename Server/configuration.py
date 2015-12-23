@@ -32,6 +32,7 @@ def get_uploads():
     if not os.path.isdir(uploads_path):
         print '[-] uploads directory not found, creating...'
         os.mkdir(uploads_path)
+        print '[+] uploads directory created'
     return uploads_path
 
 def gen_secret_key():
@@ -59,6 +60,14 @@ APP.config['UPLOADS_FOLDER'] = get_uploads()
 APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/llw.db'
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 DB = SQLAlchemy(APP)
+
+if not os.path.exists(os.path.realpath('/tmp/llw.db')):
+    print '[-] Database does not exist, creating...'
+    from models.User import User
+    DB.create_all()
+    DB.session.add(User('admin', 'admin', in_admin=1))
+    DB.session.commit()
+    print '[+] Database created'
 
 # SSLify setup
 SSL = SSLify(APP)
