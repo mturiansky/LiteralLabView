@@ -1,1 +1,1 @@
-angular.module('LiteralLabViewApp', []);
+angular.module('LiteralLabViewApp', ['ui.router']);

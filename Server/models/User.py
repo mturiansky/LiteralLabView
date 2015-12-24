@@ -52,7 +52,10 @@ def verify_user(uname, passwd):
     ''' verifies the user '''
     user = User.query.filter_by(username=uname).first()
     temp_pass = sha1(passwd).hexdigest()
-    return temp_pass == user.password
+    if temp_pass == user.password:
+        return user
+    else:
+        return None
 
 def get_user(id):
     ''' function to return the user by id '''

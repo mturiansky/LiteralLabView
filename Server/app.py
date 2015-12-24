@@ -9,7 +9,8 @@ import os
 import atexit
 from argparse import ArgumentParser as AP
 from configuration import APP as app
-from routes.core import home
+from routes.core import *
+from routes.auth import *
 
 def add_arguments(parser):
     ''' used to add options to the arg parser '''
