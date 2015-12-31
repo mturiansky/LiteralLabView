@@ -66,8 +66,10 @@ DB = SQLAlchemy(APP)
 if not os.path.exists(os.path.realpath('/tmp/llw.db')):
     print '[-] Database not found, creating...'
     from models.User import User
+    from models.DataSet import DataSet
     DB.create_all()
     DB.session.add(User('admin', 'admin', in_admin=1))
+    DB.session.add(DataSet('test-project'))
     DB.session.commit()
     print '[+] Database created'
 
