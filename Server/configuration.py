@@ -55,6 +55,9 @@ APP.config['TITLE'] = 'LiteralLabView'
 # generate secret key
 APP.secret_key = gen_secret_key()
 
+# communication key
+APP.config['COMMUNICATION_KEY'] = '2e789ebe13d0bf0b4482159a8a0304cc'
+
 # uploads folder
 APP.config['UPLOADS_FOLDER'] = get_uploads()
 
@@ -69,7 +72,7 @@ if not os.path.exists(os.path.realpath('/tmp/llw.db')):
     from models.DataSet import DataSet
     DB.create_all()
     DB.session.add(User('admin', 'admin', in_admin=1))
-    DB.session.add(DataSet('test-project'))
+    DB.session.add(DataSet('test-project', 'test-experiment'))
     DB.session.commit()
     print '[+] Database created'
 
